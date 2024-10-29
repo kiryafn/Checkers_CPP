@@ -65,6 +65,14 @@ build CMakeFiles/Checkers.dir/Board.cpp.o: CXX_COMPILER__Checkers_unscanned_Debu
   OBJECT_DIR = CMakeFiles/Checkers.dir
   OBJECT_FILE_DIR = CMakeFiles/Checkers.dir
 
+build CMakeFiles/Checkers.dir/SelectedCell.cpp.o: CXX_COMPILER__Checkers_unscanned_Debug /Users/alieksieiev/CLionProjects/Checkers/SelectedCell.cpp || cmake_object_order_depends_target_Checkers
+  DEFINES = -DCheckers_EXPORTS
+  DEP_FILE = CMakeFiles/Checkers.dir/SelectedCell.cpp.o.d
+  FLAGS = -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -fPIC -fcolor-diagnostics
+  INCLUDES = -I/Users/alieksieiev/Library/Java/JavaVirtualMachines/openjdk-22.0.1/Contents/Home/include -I/Users/alieksieiev/Library/Java/JavaVirtualMachines/openjdk-22.0.1/Contents/Home/include/darwin
+  OBJECT_DIR = CMakeFiles/Checkers.dir
+  OBJECT_FILE_DIR = CMakeFiles/Checkers.dir
+
 
 # =============================================================================
 # Link build statements for SHARED_LIBRARY target Checkers
@@ -73,7 +81,7 @@ build CMakeFiles/Checkers.dir/Board.cpp.o: CXX_COMPILER__Checkers_unscanned_Debu
 #############################################
 # Link the shared library libCheckers.dylib
 
-build libCheckers.dylib: CXX_SHARED_LIBRARY_LINKER__Checkers_Debug CMakeFiles/Checkers.dir/library.cpp.o CMakeFiles/Checkers.dir/Board.cpp.o
+build libCheckers.dylib: CXX_SHARED_LIBRARY_LINKER__Checkers_Debug CMakeFiles/Checkers.dir/library.cpp.o CMakeFiles/Checkers.dir/Board.cpp.o CMakeFiles/Checkers.dir/SelectedCell.cpp.o
   ARCH_FLAGS = -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk
   INSTALLNAME_DIR = @rpath/
   LANGUAGE_COMPILE_FLAGS = -g

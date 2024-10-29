@@ -1,8 +1,9 @@
 #include "CheckersJNI.h"
 #include "Board.cpp"
 #include <cmath>
+#include "SelectedCell.cpp"
 
-
+SelectedCell selectedCell = SelectedCell();
 Board board = Board();
 
 JNIEXPORT jintArray JNICALL Java_CheckersJNI_getBoardState(JNIEnv *env, jobject obj) {
@@ -15,9 +16,42 @@ JNIEXPORT jintArray JNICALL Java_CheckersJNI_getBoardState(JNIEnv *env, jobject 
     return result;
 }
 
+JNIEXPORT jint JNICALL Java_CheckersJNI_getSelectedCol (JNIEnv *, jobject){return selectedCell.getSelectedCol();}
+
+JNIEXPORT jint JNICALL Java_CheckersJNI_getSelectedRow (JNIEnv *, jobject){return  selectedCell.getSelectedRow();}
+
+JNIEXPORT void JNICALL Java_CheckersJNI_setSelectedCol (JNIEnv *, jobject, jint a){selectedCell.setSelectedCol(a);}
+
+JNIEXPORT void JNICALL Java_CheckersJNI_setSelectedRow (JNIEnv *, jobject, jint a){selectedCell.setSelectedRow(a);}
+
+JNIEXPORT jboolean JNICALL Java_CheckersJNI_isPieceSelected(JNIEnv *, jobject){return selectedCell.isPieceSelected();}
+
+JNIEXPORT void JNICALL Java_CheckersJNI_setPieceSelected (JNIEnv *, jobject, jboolean a){selectedCell.setPieceSelected(a);}
+
 JNIEXPORT jint JNICALL Java_CheckersJNI_getBoardSize(JNIEnv *env, jobject obj) { return board.size; }
 
 JNIEXPORT jboolean JNICALL Java_CheckersJNI_getCurrentPlayer(JNIEnv *env, jobject obj) { return board.isBlackTurn; }
+
+JNIEXPORT jint JNICALL Java_CheckersJNI_getBoardValue (JNIEnv *, jobject, jint x, jint y){return board.boardState[x][y];}
+
+JNIEXPORT jboolean JNICALL Java_CheckersJNI_gameFinished(JNIEnv *, jobject){
+        bool player1HasPieces = false;
+        bool player2HasPieces = false;
+
+        for (int row = 0; row < 8; ++row) {
+            for (int col = 0; col < 8; ++col) {
+                if (board.boardState[row][col] == 1 || board.boardState[row][col] == 3) {
+                    player1HasPieces = true;
+                }
+                if (board.boardState[row][col] == 2 || board.boardState[row][col] == 4) {
+                    player2HasPieces = true;
+                }
+            }
+        }
+
+        // Если у одного из игроков больше нет фишек, игра окончена
+        return !(player1HasPieces && player2HasPieces);
+}
 
 bool canCaptureFrom(int x, int y) {
     int piece = board.boardState[x][y];
@@ -58,7 +92,8 @@ bool mustCapture(int player) {
     return false;
 }
 
-JNIEXPORT jboolean JNICALL Java_CheckersJNI_movePiece(JNIEnv *env, jobject obj, jint fromX, jint fromY, jint toX, jint toY) {
+JNIEXPORT jboolean JNICALL
+Java_CheckersJNI_movePiece(JNIEnv *env, jobject obj, jint fromX, jint fromY, jint toX, jint toY) {
     // Check if destination cell is empty
     if (board.boardState[toX][toY] != 0) return false;
 
@@ -128,8 +163,7 @@ JNIEXPORT jboolean JNICALL Java_CheckersJNI_movePiece(JNIEnv *env, jobject obj, 
                 board.boardState[toX][toY] = piece;
                 board.boardState[fromX][fromY] = 0;
                 moveSuccessful = true;
-            }
-            else{
+            } else {
                 if (!captureObligatory) {  // Allow non-capturing moves only if capture is not mandatory
                     board.boardState[toX][toY] = piece;
                     board.boardState[fromX][fromY] = 0;
@@ -165,7 +199,7 @@ JNIEXPORT jboolean JNICALL Java_CheckersJNI_movePiece(JNIEnv *env, jobject obj, 
     if (moveSuccessful) {
         if ((player == 1 && toX == 7) || (player == 2 && toX == 0)) {
             if (board.boardState[toX][toY] < 3)
-            board.boardState[toX][toY] += 2;  // Promote to king
+                board.boardState[toX][toY] += 2;  // Promote to king
         }
 
         // Проверка на возможность дальнейшего захвата

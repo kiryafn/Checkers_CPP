@@ -8,4 +8,5 @@ include_directories(${JAVA_HOME}/include)
 include_directories(${JAVA_HOME}/include/darwin)
 
 add_library(Checkers SHARED library.cpp Board.cpp
-        CheckersJNI.h)
+        CheckersJNI.h
+        SelectedCell.cpp)

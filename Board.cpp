@@ -4,7 +4,7 @@ class Board{
 public:
     int size = 8;
     int boardState[8][8];
-    bool isBlackTurn = true;
+    bool isBlackTurn = false;
 public: Board(){
 
         initializeBoard();
