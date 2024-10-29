@@ -1,0 +1,3 @@
+/Users/alieksieiev/CLionProjects/Checkers/cmake-build-debug/CMakeFiles/Checkers.dir
+/Users/alieksieiev/CLionProjects/Checkers/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/alieksieiev/CLionProjects/Checkers/cmake-build-debug/CMakeFiles/rebuild_cache.dir
