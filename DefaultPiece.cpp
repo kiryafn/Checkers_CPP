@@ -14,8 +14,7 @@ public:
     }
 
     bool canCapture(int toX, int toY) override {
-        int direction = (player == 1) ? 1 : -1;
-        return (abs(toX - posX) == 2 && abs(toY - posY) == 2 && (toX - posX == 2 * direction));
+        return (abs(toX - posX) == 2 && abs(toY - posY) == 2);
     }
 
     bool moveAndCapture(int toX, int toY, Board& board) override{

@@ -65,7 +65,6 @@ Java_CheckersJNI_movePiece(JNIEnv *env, jobject obj, jint fromX, jint fromY, jin
     // Check if destination cell is empty
     if (board.boardState[toX][toY] != 0) return false;
 
-
     int pieceValue = board.boardState[fromX][fromY];
     int player = (pieceValue == 1 || pieceValue == 3) ? 1 : 2;
     bool isKing = pieceValue >= 3;
@@ -75,9 +74,6 @@ Java_CheckersJNI_movePiece(JNIEnv *env, jobject obj, jint fromX, jint fromY, jin
 
     Piece *piece = isKing ? static_cast<Piece*>(new KingPiece(player, fromX, fromY))
                           : static_cast<Piece*>(new DefaultPiece(player, fromX, fromY));
-
-    int opponentPiece = (player == 1) ? 2 : 1;
-    int opponentKing = opponentPiece + 2;
 
 
     // Check if capture is mandatory
@@ -98,7 +94,7 @@ Java_CheckersJNI_movePiece(JNIEnv *env, jobject obj, jint fromX, jint fromY, jin
             if (captureCount > 0) {                               //if found smthing
                 if (piece->moveAndCapture(toX, toY, board)){      //move to destination and eat opponent pieces
                     moveSuccessful = true;
-                    beatedOnce = true;                            //flag for continuing move if there and another pieces that must be eaten
+                    beatedOnce = true;                            //flag for continuing move if there are another pieces that must be eaten
                 }
 
             } else {
@@ -128,7 +124,7 @@ Java_CheckersJNI_movePiece(JNIEnv *env, jobject obj, jint fromX, jint fromY, jin
     if (moveSuccessful) {
         if ((player == 1 && toX == 7) || (player == 2 && toX == 0)) {
             if (piece->getValue() < 3)
-                board.boardState[toX][toY] += 2;  // Promote to king if not king yet
+                board.boardState[toX][toY] += 2;  // Promote to king if not a king yet
         }
 
         // Проверка на возможность дальнейшего захвата

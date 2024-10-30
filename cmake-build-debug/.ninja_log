@@ -1,11 +1,17 @@
 # ninja log v5
-4	51	1730301139139798958	build.ninja	2fb79851e3c1a41d
-5	193	1730300949339178978	CMakeFiles/Checkers.dir/DefaultPiece.cpp.o	5e6158058fbf73c9
 4	208	1730300949354835850	CMakeFiles/Checkers.dir/library.cpp.o	c8bca277bbd51464
-3	29	1730222498808051505	CMakeFiles/Checkers.dir/Board.cpp.o	fefa701fc1aee54d
+5	193	1730300949339178978	CMakeFiles/Checkers.dir/DefaultPiece.cpp.o	5e6158058fbf73c9
+4	51	1730301415466054118	build.ninja	2fb79851e3c1a41d
 5	193	1730300949339256519	CMakeFiles/Checkers.dir/KingPiece.cpp.o	df0d11263d7518bd
+3	29	1730222498808051505	CMakeFiles/Checkers.dir/Board.cpp.o	fefa701fc1aee54d
 208	300	1730300949445254588	libCheckers.dylib	ad52c801206e9da
 3	29	1730222498808051046	CMakeFiles/Checkers.dir/SelectedCell.cpp.o	fa82bd0dc4714685
 3	167	1730298547346435105	CMakeFiles/Checkers.dir/MoveValidator.cpp.o	57a0d12eb2dbdb73
 4	128	1730224891388927016	CMakeFiles/Checkers.dir/MovePiece.cpp.o	16ea1211d04f13d
 5	173	1730300949317784100	CMakeFiles/Checkers.dir/Piece.cpp.o	7bcd8f2476f9cc84
+3	133	1730301561825345090	CMakeFiles/Checkers.dir/Piece.cpp.o	7bcd8f2476f9cc84
+3	133	1730301561825348506	CMakeFiles/Checkers.dir/Board.cpp.o	fefa701fc1aee54d
+3	169	1730301561862777828	CMakeFiles/Checkers.dir/DefaultPiece.cpp.o	5e6158058fbf73c9
+3	169	1730301561862772912	CMakeFiles/Checkers.dir/KingPiece.cpp.o	df0d11263d7518bd
+2	184	1730301561877367076	CMakeFiles/Checkers.dir/library.cpp.o	c8bca277bbd51464
+184	266	1730301561958229227	libCheckers.dylib	6021558319ca0816
