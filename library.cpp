@@ -1,7 +1,10 @@
+#pragma once
 #include "CheckersJNI.h"
 #include "Board.cpp"
 #include <cmath>
 #include "SelectedCell.cpp"
+#include "MoveValidator.cpp"
+#include "MovePiece.cpp"
 
 SelectedCell selectedCell = SelectedCell();
 Board board = Board();
@@ -118,7 +121,7 @@ Java_CheckersJNI_movePiece(JNIEnv *env, jobject obj, jint fromX, jint fromY, jin
 
     // Logic for kings
     if (isKing) {
-        if (abs(toX - fromX) == abs(toY - fromY)) {  // Ensure it's a diagonal move
+        if (MoveValidator::isDiagonalMove(fromX, fromY, toX, toY)) {  // Ensure it's a diagonal move
             int dx = (toX > fromX) ? 1 : -1;
             int dy = (toY > fromY) ? 1 : -1;
             int x = fromX + dx;
@@ -152,21 +155,23 @@ Java_CheckersJNI_movePiece(JNIEnv *env, jobject obj, jint fromX, jint fromY, jin
             }
 
             if (captureObligatory && captureCount == 0) return false;  // Must capture if possible
+
             if (captureCount > 0) {
                 x = fromX + dx;
                 y = fromY + dy;
                 while (x != toX && y != toY) {
-                    if (board.boardState[x][y] != 0) board.boardState[x][y] = 0;
+                    if (board.boardState[x][y] != 0) {
+                        board.boardState[x][y] = 0;
+                        beatedOnce = true;
+                    }
                     x += dx;
                     y += dy;
                 }
-                board.boardState[toX][toY] = piece;
-                board.boardState[fromX][fromY] = 0;
+                MovePiece::movePiece(board, fromX, fromY, toX, toY, piece);
                 moveSuccessful = true;
             } else {
                 if (!captureObligatory) {  // Allow non-capturing moves only if capture is not mandatory
-                    board.boardState[toX][toY] = piece;
-                    board.boardState[fromX][fromY] = 0;
+                    MovePiece::movePiece(board, fromX, fromY, toX, toY, piece);
                     moveSuccessful = true;
                 }
             }
@@ -174,23 +179,19 @@ Java_CheckersJNI_movePiece(JNIEnv *env, jobject obj, jint fromX, jint fromY, jin
     }
         // Logic for regular pieces with forward and backward capture capability
     else {
-        if (abs(toX - fromX) == 1 && abs(toY - fromY) == 1 && toX - fromX == direction) {
+        if (MoveValidator::isValidOneStepMove(fromX, fromY, toX, toY, direction)) {
             if (!captureObligatory) {  // Allow non-capturing moves only if capture is not mandatory
-                board.boardState[toX][toY] = piece;
-                board.boardState[fromX][fromY] = 0;
+                MovePiece::movePiece(board, fromX, fromY, toX, toY, piece);
                 moveSuccessful = true;
             }
         } else if (abs(toX - fromX) == 2 && abs(toY - fromY) == 2) {
             int midX = (fromX + toX) / 2;
             int midY = (fromY + toY) / 2;
 
-            if (board.boardState[midX][midY] == opponentPiece || board.boardState[midX][midY] == opponentKing) {
-                board.boardState[toX][toY] = piece;
-                board.boardState[fromX][fromY] = 0;
-                board.boardState[midX][midY] = 0;
+            if (board.boardState[midX][midY] == opponentPiece || board.boardState[midX][midY] == opponentKing) { //If we jump over opponents piece
+                MovePiece::movePiece(board, fromX, fromY, toX, toY, midX, midY, piece);
                 moveSuccessful = true;
                 beatedOnce = true;
-
             }
         }
     }
