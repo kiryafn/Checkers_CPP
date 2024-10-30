@@ -73,17 +73,25 @@ build CMakeFiles/Checkers.dir/SelectedCell.cpp.o: CXX_COMPILER__Checkers_unscann
   OBJECT_DIR = CMakeFiles/Checkers.dir
   OBJECT_FILE_DIR = CMakeFiles/Checkers.dir
 
-build CMakeFiles/Checkers.dir/MoveValidator.cpp.o: CXX_COMPILER__Checkers_unscanned_Debug /Users/alieksieiev/CLionProjects/Checkers/MoveValidator.cpp || cmake_object_order_depends_target_Checkers
+build CMakeFiles/Checkers.dir/Piece.cpp.o: CXX_COMPILER__Checkers_unscanned_Debug /Users/alieksieiev/CLionProjects/Checkers/Piece.cpp || cmake_object_order_depends_target_Checkers
   DEFINES = -DCheckers_EXPORTS
-  DEP_FILE = CMakeFiles/Checkers.dir/MoveValidator.cpp.o.d
+  DEP_FILE = CMakeFiles/Checkers.dir/Piece.cpp.o.d
   FLAGS = -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -fPIC -fcolor-diagnostics
   INCLUDES = -I/Users/alieksieiev/Library/Java/JavaVirtualMachines/openjdk-22.0.1/Contents/Home/include -I/Users/alieksieiev/Library/Java/JavaVirtualMachines/openjdk-22.0.1/Contents/Home/include/darwin
   OBJECT_DIR = CMakeFiles/Checkers.dir
   OBJECT_FILE_DIR = CMakeFiles/Checkers.dir
 
-build CMakeFiles/Checkers.dir/MovePiece.cpp.o: CXX_COMPILER__Checkers_unscanned_Debug /Users/alieksieiev/CLionProjects/Checkers/MovePiece.cpp || cmake_object_order_depends_target_Checkers
+build CMakeFiles/Checkers.dir/DefaultPiece.cpp.o: CXX_COMPILER__Checkers_unscanned_Debug /Users/alieksieiev/CLionProjects/Checkers/DefaultPiece.cpp || cmake_object_order_depends_target_Checkers
   DEFINES = -DCheckers_EXPORTS
-  DEP_FILE = CMakeFiles/Checkers.dir/MovePiece.cpp.o.d
+  DEP_FILE = CMakeFiles/Checkers.dir/DefaultPiece.cpp.o.d
+  FLAGS = -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -fPIC -fcolor-diagnostics
+  INCLUDES = -I/Users/alieksieiev/Library/Java/JavaVirtualMachines/openjdk-22.0.1/Contents/Home/include -I/Users/alieksieiev/Library/Java/JavaVirtualMachines/openjdk-22.0.1/Contents/Home/include/darwin
+  OBJECT_DIR = CMakeFiles/Checkers.dir
+  OBJECT_FILE_DIR = CMakeFiles/Checkers.dir
+
+build CMakeFiles/Checkers.dir/KingPiece.cpp.o: CXX_COMPILER__Checkers_unscanned_Debug /Users/alieksieiev/CLionProjects/Checkers/KingPiece.cpp || cmake_object_order_depends_target_Checkers
+  DEFINES = -DCheckers_EXPORTS
+  DEP_FILE = CMakeFiles/Checkers.dir/KingPiece.cpp.o.d
   FLAGS = -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -fPIC -fcolor-diagnostics
   INCLUDES = -I/Users/alieksieiev/Library/Java/JavaVirtualMachines/openjdk-22.0.1/Contents/Home/include -I/Users/alieksieiev/Library/Java/JavaVirtualMachines/openjdk-22.0.1/Contents/Home/include/darwin
   OBJECT_DIR = CMakeFiles/Checkers.dir
@@ -97,7 +105,7 @@ build CMakeFiles/Checkers.dir/MovePiece.cpp.o: CXX_COMPILER__Checkers_unscanned_
 #############################################
 # Link the shared library libCheckers.dylib
 
-build libCheckers.dylib: CXX_SHARED_LIBRARY_LINKER__Checkers_Debug CMakeFiles/Checkers.dir/library.cpp.o CMakeFiles/Checkers.dir/Board.cpp.o CMakeFiles/Checkers.dir/SelectedCell.cpp.o CMakeFiles/Checkers.dir/MoveValidator.cpp.o CMakeFiles/Checkers.dir/MovePiece.cpp.o
+build libCheckers.dylib: CXX_SHARED_LIBRARY_LINKER__Checkers_Debug CMakeFiles/Checkers.dir/library.cpp.o CMakeFiles/Checkers.dir/Board.cpp.o CMakeFiles/Checkers.dir/SelectedCell.cpp.o CMakeFiles/Checkers.dir/Piece.cpp.o CMakeFiles/Checkers.dir/DefaultPiece.cpp.o CMakeFiles/Checkers.dir/KingPiece.cpp.o
   ARCH_FLAGS = -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk
   INSTALLNAME_DIR = @rpath/
   LANGUAGE_COMPILE_FLAGS = -g
