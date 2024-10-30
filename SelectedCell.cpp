@@ -1,3 +1,4 @@
+#pragma once
 class SelectedCell {
 private:
     int selectedRow = -1;

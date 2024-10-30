@@ -1,5 +1,4 @@
-#include "cmath"
-
+#pragma once
 class Board{
 public:
     int size = 8;
@@ -27,23 +26,5 @@ public: Board(){
     const int* getBoardState() const {
         return &boardState[0][0]; //! Returns pointer to the beginning of the array
     }
-
-    void beatOpponentPieceByDiagonal(int fromX, int fromY, int toX, int toY, int player, int piece, bool& moveSuccessful){
-        // Capture move (diagonal two-cell jump)
-            int midX = (fromX + toX) / 2;
-            int midY = (fromY + toY) / 2;
-            int opponentPiece = (player == 1) ? 2 : 1;
-            int opponentKing = opponentPiece + 2;
-
-            // Check if capture conditions are met
-            if (boardState[midX][midY] == opponentPiece || boardState[midX][midY] == opponentKing) {
-                // Capture opponent piece
-                boardState[toX][toY] = piece;
-                boardState[fromX][fromY] = 0;
-                boardState[midX][midY] = 0;  // Remove captured piece
-                moveSuccessful = true;
-            }
-    }
-
 
 };
