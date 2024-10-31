@@ -1,19 +1,19 @@
 #pragma once
 class SelectedCell {
 private:
-    int selectedRow = -1;
-    int selectedCol = -1;
-    bool pieceSelected = false;
+    int row = 0;
+    int col = 0;
+    bool cellSelected = false;
 public:
-    int getSelectedRow() { return selectedRow; }
+    int getRow() { return row; }
 
-    void setSelectedRow(int a) { selectedRow = a; }
+    void setRow(int a) { row = a; }
 
-    int getSelectedCol() { return selectedCol; }
+    int getCol() { return col; }
 
-    void setSelectedCol(int a) {selectedCol = a; }
+    void setCol(int a) {col = a; }
 
-    bool isPieceSelected() { return pieceSelected; }
+    bool isCellSelected() { return cellSelected; }
 
-    void setPieceSelected(bool a) { pieceSelected = a; }
+    void setCellSelected(bool a) { cellSelected = a; }
 };

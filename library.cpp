@@ -6,8 +6,10 @@
 #include "Piece.cpp"
 #include "DefaultPiece.cpp"
 #include "KingPiece.cpp"
+#include "FromToCoordinates.cpp"
 
-SelectedCell selectedCell = SelectedCell();
+SelectedCell cell = SelectedCell();
+FromToCoordinates ftc = FromToCoordinates();
 Board board = Board();
 
 JNIEXPORT jintArray JNICALL Java_CheckersJNI_getBoardState(JNIEnv *env, jobject obj) {
@@ -20,17 +22,38 @@ JNIEXPORT jintArray JNICALL Java_CheckersJNI_getBoardState(JNIEnv *env, jobject 
     return result;
 }
 
-JNIEXPORT jint JNICALL Java_CheckersJNI_getSelectedCol (JNIEnv *, jobject){return selectedCell.getSelectedCol();}
+JNIEXPORT jint JNICALL Java_CheckersJNI_getSelectedCol(JNIEnv *, jobject){return cell.getCol();}
 
-JNIEXPORT jint JNICALL Java_CheckersJNI_getSelectedRow (JNIEnv *, jobject){return  selectedCell.getSelectedRow();}
+JNIEXPORT jint JNICALL Java_CheckersJNI_getSelectedRow(JNIEnv *, jobject){return cell.getRow();}
 
-JNIEXPORT void JNICALL Java_CheckersJNI_setSelectedCol (JNIEnv *, jobject, jint a){selectedCell.setSelectedCol(a);}
+JNIEXPORT void JNICALL Java_CheckersJNI_setSelectedCol(JNIEnv *, jobject, jint a){cell.setCol(a);}
 
-JNIEXPORT void JNICALL Java_CheckersJNI_setSelectedRow (JNIEnv *, jobject, jint a){selectedCell.setSelectedRow(a);}
+JNIEXPORT void JNICALL Java_CheckersJNI_setSelectedRow (JNIEnv *, jobject, jint a){cell.setRow(a);}
 
-JNIEXPORT jboolean JNICALL Java_CheckersJNI_isPieceSelected(JNIEnv *, jobject){return selectedCell.isPieceSelected();}
+JNIEXPORT jboolean JNICALL Java_CheckersJNI_isCellSelected (JNIEnv *, jobject){return cell.isCellSelected();}
 
-JNIEXPORT void JNICALL Java_CheckersJNI_setPieceSelected (JNIEnv *, jobject, jboolean a){selectedCell.setPieceSelected(a);}
+JNIEXPORT void JNICALL Java_CheckersJNI_setCellSelected (JNIEnv *, jobject, jboolean a){cell.setCellSelected(a);}
+
+
+
+JNIEXPORT void JNICALL Java_CheckersJNI_setFromRow(JNIEnv *, jobject, jint a){ftc.fromRow = a;}
+
+JNIEXPORT void JNICALL Java_CheckersJNI_setFromCol(JNIEnv *, jobject, jint a){ftc.fromCol = a;}
+
+JNIEXPORT void JNICALL Java_CheckersJNI_setToCol(JNIEnv *, jobject, jint a){ftc.toCol = a;}
+
+JNIEXPORT void JNICALL Java_CheckersJNI_setToRow(JNIEnv *, jobject, jint a){ftc.toRow = a;}
+
+
+JNIEXPORT jint JNICALL Java_CheckersJNI_getFromRow(JNIEnv *, jobject){return ftc.fromRow;}
+
+JNIEXPORT jint JNICALL Java_CheckersJNI_getFromCol(JNIEnv *, jobject){return ftc.fromCol;}
+
+JNIEXPORT jint JNICALL Java_CheckersJNI_getToCol(JNIEnv *, jobject){return ftc.toCol;}
+
+JNIEXPORT jint JNICALL Java_CheckersJNI_getToRow(JNIEnv *, jobject){return ftc.toRow;}
+
+
 
 JNIEXPORT jint JNICALL Java_CheckersJNI_getBoardSize(JNIEnv *env, jobject obj) { return board.size; }
 

@@ -13,4 +13,5 @@ add_library(Checkers SHARED library.cpp Board.cpp
         Piece.cpp
         DefaultPiece.cpp
         KingPiece.cpp
+        FromToCoordinates.cpp
 )
