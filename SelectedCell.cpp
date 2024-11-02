@@ -1,8 +1,8 @@
 #pragma once
 class SelectedCell {
 private:
-    int row = 0;
-    int col = 0;
+    int row = -1;
+    int col = -1;
     bool cellSelected = false;
 public:
     int getRow() { return row; }
