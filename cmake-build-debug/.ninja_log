@@ -4,12 +4,9 @@
 4	128	1730224891388927016	CMakeFiles/Checkers.dir/MovePiece.cpp.o	16ea1211d04f13d
 3	167	1730298547346435105	CMakeFiles/Checkers.dir/MoveValidator.cpp.o	57a0d12eb2dbdb73
 3	121	1730552221795742014	CMakeFiles/Checkers.dir/SelectedCell.cpp.o	fa82bd0dc4714685
-167	251	1730552221925799289	libCheckers.dylib	3c33b8eaee27ba98
+193	291	1730556548956509019	libCheckers.dylib	3c33b8eaee27ba98
 3	133	1730301561825348506	CMakeFiles/Checkers.dir/Board.cpp.o	fefa701fc1aee54d
 3	169	1730301561862772912	CMakeFiles/Checkers.dir/KingPiece.cpp.o	df0d11263d7518bd
 3	169	1730301561862777828	CMakeFiles/Checkers.dir/DefaultPiece.cpp.o	5e6158058fbf73c9
-4	51	1730556548662917662	build.ninja	2fb79851e3c1a41d
-2	167	1730552221843084796	CMakeFiles/Checkers.dir/library.cpp.o	c8bca277bbd51464
-2	46	1730556548662917662	build.ninja	2fb79851e3c1a41d
+2	46	1730559974962107307	build.ninja	2fb79851e3c1a41d
 1	193	1730556548858558886	CMakeFiles/Checkers.dir/library.cpp.o	c8bca277bbd51464
-193	291	1730556548956509019	libCheckers.dylib	3c33b8eaee27ba98

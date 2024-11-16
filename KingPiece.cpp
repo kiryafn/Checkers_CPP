@@ -56,7 +56,7 @@ public:
         }
         return true;
     }
-    bool moveAndCapture(int toX, int toY, Board& board){
+    bool moveAndCapture(int toX, int toY, Board& board) override{
         int directionX = (toX > posX) ? 1 : -1;
         int directionY = (toY > posY) ? 1 : -1;
 
